@@ -1,2 +1,0 @@
-# coal
-coal semester project
