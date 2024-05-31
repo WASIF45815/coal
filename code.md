@@ -1,26 +1,41 @@
 INCLUDE Irvine32.inc
 
 .data
+
 students STRUCT
+
     id DWORD ?
+    
     marks DWORD ?
+    
 students ENDS
 
 dataArray students 10 DUP({})
 
 welcomeMsg BYTE "                       Welcome to Student Management System", 0
+
 menuPrompt1 BYTE "Press 1 to insert data", 0
+
 menuPrompt2 BYTE "Press 2 to display", 0
+
 promptMenu BYTE "Enter your choice: ", 0
+
 promptCount BYTE "Enter the number of students data you want to enter: ", 0
+
 promptId BYTE "Enter student id: ", 0
+
 promptMarks BYTE "Enter student marks: ", 0
+
 choiceMsg BYTE "Your choice: ", 0
+
 userChoice BYTE 0
 
 .code
+
 main PROC
+
     mov edx, OFFSET welcomeMsg
+    
     call WriteString
     call Crlf 
      call Crlf
@@ -34,6 +49,7 @@ main PROC
 
 
 mainLoop:
+
     mov edx, OFFSET promptMenu
     call WriteString
     call ReadChar
@@ -54,20 +70,25 @@ mainLoop:
     jmp exitProgram
 
 insertData:
+
     call InputData
     jmp mainLoop
 
 displayData:
+
     call Crlf 
     call DisplayData
     jmp mainLoop
 
 exitProgram:
+
     exit
 
 main ENDP
 
+
 InputData PROC
+
     mov edx, OFFSET promptCount
     call WriteString
     call Crlf 
@@ -97,6 +118,7 @@ inputLoop:
 InputData ENDP
 
 DisplayData PROC
+
     mov ecx, 10 ; Loop counter
     mov esi, OFFSET dataArray 
 
